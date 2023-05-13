@@ -24,7 +24,6 @@ namespace ExamsPerformance
             InitializeComponent();
         }
 
-
         private void LoginButtonClick(object sender, RoutedEventArgs e)
         {
             string userLogin = LoginTextBox.Text.Trim();

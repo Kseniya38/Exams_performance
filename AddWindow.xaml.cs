@@ -26,18 +26,18 @@ namespace ExamsPerformance
 
         private void AddButtonClick(object sender, RoutedEventArgs e)
         {
-            bool correct = false;
+            bool correct = true;
             bool markIsInt = false;
             string studentFIO = StudentFIOComboBox.Text.Trim();
             string teacherFIO = TeacherFIOComboBox.Text.Trim();
             string subjectName = SubjectComboBox.Text.Trim();
-            string attestationType = AttestationTypeComboBox.Text.Trim();         
+            string attestationTypeName = AttestationTypeComboBox.Text.Trim();
             string result = ResultComboBox.Text.Trim();
 
             string markStr = MarkTextBox.Text.Trim();
             int? mark = null;
 
-            bool requiredFields = CheckRequiredFields(studentFIO, teacherFIO, subjectName, attestationType);
+            bool requiredFields = CheckRequiredFields(studentFIO, teacherFIO, subjectName, attestationTypeName);
 
             if (requiredFields == true)
             {
@@ -105,12 +105,16 @@ namespace ExamsPerformance
                     }
                 }
                                 
-                Attestation attestation = new Attestation(studentId, teacherId, subjectId, attestationDate, attestationType, mark, result);
+                Attestation attestation = new Attestation(studentId, teacherId, subjectId, attestationDate, attestationTypeName, mark, result);
                 db.Attestation.Add(attestation);
                 db.SaveChanges();
 
                 MessageBox.Show("Новая запись успешно добавлена!", "Сообщение");
             }
+            /*else
+            {
+                MessageBox.Show("К сожалению, запись не добавлена. Проверьте правильность заполнения полей.");
+            }*/
         }
 
         private void CancelButtonClick(object sender, RoutedEventArgs e)
@@ -180,7 +184,7 @@ namespace ExamsPerformance
             return correct;
         }
 
-        private bool CheckRequiredFields(string studentFIO, string teacherFIO, string subjectName, string attestationType)
+        private bool CheckRequiredFields(string studentFIO, string teacherFIO, string subjectName, string attestationTypeName)
         {
             bool requiredFields = true;
             StudentFIOComboBox.Background = Brushes.Transparent;
@@ -207,7 +211,7 @@ namespace ExamsPerformance
                 SubjectComboBox.ToolTip = "Заполните это поле";
                 SubjectComboBox.Background = Brushes.Pink; ;
             }
-            if (attestationType == string.Empty)
+            if (attestationTypeName == string.Empty)
             {
                 requiredFields = false;
                 AttestationTypeComboBox.ToolTip = "Заполните это поле";

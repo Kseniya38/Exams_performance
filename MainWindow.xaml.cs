@@ -72,6 +72,7 @@ namespace ExamsPerformance
                 MessageBox.Show($"StudentId: {attestation.StudentId}, SubjectId: {attestation.SubjectId}, TeacherId: {attestation.TeacherId}");
                 db.Attestation.Remove(attestation);
                 db.SaveChanges();
+                attestationsGrid.Items.Refresh();
             }
 
         }

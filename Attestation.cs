@@ -37,15 +37,6 @@ namespace ExamsPerformance
             this.Mark = mark;
             this.Result = result;
         }
-        
-
-    
-        /*
-        public override string ToString()
-        {
-            return "Студент: " + student_id + " Преподаватель: " + teacher_id + " Предмет: " + subject_id + " Дата: " + attestation_date + " Вид аттестации: " + attestation_type + " Балл: " + mark + " Оценка: " + result;
-        }
-        */
 
     }
 }
