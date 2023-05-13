@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 
-namespace Exams_performance.Properties
+namespace ExamsPerformance.Properties
 {
     /// <summary>
     ///   Класс ресурсов со строгим типом для поиска локализованных строк и пр.

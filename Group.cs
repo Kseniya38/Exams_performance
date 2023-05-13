@@ -1,4 +1,4 @@
-namespace Exams_performance
+namespace ExamsPerformance
 {
     using System;
     using System.Collections.Generic;
@@ -10,7 +10,7 @@ namespace Exams_performance
     public partial class Group
     {
         [Key]
-        public string group_id { get; set; }
+        public string GroupId { get; set; }
 
         //public string Group_id
         //{

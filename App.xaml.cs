@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Exams_performance
+namespace ExamsPerformance
 {
     /// <summary>
     /// Логика взаимодействия для App.xaml

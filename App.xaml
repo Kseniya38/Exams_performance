@@ -1,7 +1,7 @@
-﻿<Application x:Class="Exams_performance.App"
+﻿<Application x:Class="ExamsPerformance.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Exams_performance"
+             xmlns:local="clr-namespace:ExamsPerformance"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>

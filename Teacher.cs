@@ -1,4 +1,4 @@
-namespace Exams_performance
+namespace ExamsPerformance
 {
     using System;
     using System.Collections.Generic;
@@ -10,14 +10,14 @@ namespace Exams_performance
     public partial class Teacher
     {
         [Key]
-        public int teacher_id { get; set; }
+        public int TeacherId { get; set; }
 
         [Required]
-        private string teacher_fio;
-        public string Teacher_fio
+        private string teacherFIO;
+        public string TeacherFIO
         {
-            get { return teacher_fio; }
-            set { teacher_fio = value; }
+            get { return teacherFIO; }
+            set { teacherFIO = value; }
         }
     }
 }

@@ -1,9 +1,9 @@
-﻿<Window x:Class="Exams_performance.CreateDocWindow"
+﻿<Window x:Class="ExamsPerformance.CreateDocWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Exams_performance"
+        xmlns:local="clr-namespace:ExamsPerformance"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="ЭКЗАМЕНАЦИОННАЯ УСПЕВАЕМОСТЬ СТУДЕНТОВ: Формирование документа" Height="340" Width="960" Icon="Resources/paper_book.ico">
@@ -21,16 +21,16 @@
         </Grid.ColumnDefinitions>
 
         <Label Content="Документ" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" Width="100" VerticalAlignment="Bottom" Margin="0, 10" Height="40" FontSize="16" FontWeight="Bold"/>
-        <ComboBox x:Name="Docs_ComboBox" materialDesign:HintAssist.Hint="Выберите вид документа" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="10, 0" VerticalAlignment="Center" Width="300" Height="40" />
+        <ComboBox x:Name="DocsComboBox" materialDesign:HintAssist.Hint="Выберите вид документа" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="10, 0" VerticalAlignment="Center" Width="300" Height="40" />
 
         <Label Content="Группа" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Width="100" VerticalAlignment="Bottom" Margin="0, 10" Height="40" FontSize="16" FontWeight="Bold"/>
-        <ComboBox x:Name="Group_ComboBox" DisplayMemberPath="group_id" materialDesign:HintAssist.Hint="Выберите группу" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" Margin="10, 0" VerticalAlignment="Center" Width="300" Height="40" />
+        <ComboBox x:Name="GroupComboBox" DisplayMemberPath="group_id" materialDesign:HintAssist.Hint="Выберите группу" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Left" Margin="10, 0" VerticalAlignment="Center" Width="300" Height="40" />
 
         <Label Content="Студент" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Width="100" VerticalAlignment="Bottom" Margin="0, 10" Height="40" FontSize="16" FontWeight="Bold"/>
-        <ComboBox x:Name="Student_ComboBox" DisplayMemberPath="Student_fio" materialDesign:HintAssist.Hint="Выберите ФИО студента" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="10, 0" VerticalAlignment="Center" Width="300" Height="40" />
+        <ComboBox x:Name="StudentComboBox" DisplayMemberPath="Student_fio" materialDesign:HintAssist.Hint="Выберите ФИО студента" Style="{StaticResource MaterialDesignFloatingHintComboBox}" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="10, 0" VerticalAlignment="Center" Width="300" Height="40" />
 
         <Label Content="Предмет" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Width="100" VerticalAlignment="Bottom" Margin="0, 10" Height="40" FontSize="16" FontWeight="Bold"/>
-        <ComboBox x:Name="Subject_ComboBox" DisplayMemberPath="Subject_name" materialDesign:HintAssist.Hint="Выберите предмет" Style="{StaticResource MaterialDesignFloatingHintComboBox}"  Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" Margin="10, 0" VerticalAlignment="Center" Width="300" Height="40" />
+        <ComboBox x:Name="SubjectComboBox" DisplayMemberPath="Subject_name" materialDesign:HintAssist.Hint="Выберите предмет" Style="{StaticResource MaterialDesignFloatingHintComboBox}"  Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" Margin="10, 0" VerticalAlignment="Center" Width="300" Height="40" />
 
         <Button  Grid.Row="3" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="Сформировать" Margin="0, 10" Width="160" x:Name="CreateDocButton" Click="CreateDocButtonClick" Height="40" Grid.ColumnSpan="4"/>
 

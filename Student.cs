@@ -1,4 +1,4 @@
-namespace Exams_performance
+namespace ExamsPerformance
 {
     using System;
     using System.Collections.Generic;
@@ -16,29 +16,29 @@ namespace Exams_performance
         }
 
         [Key]
-        public int student_id { get; set; }
+        public int StudentId { get; set; }
 
         [Required]
-        private string student_fio;
-        private DateTime student_birth_date;
-        private int student_gender;
+        private string studentFIO;
+        private DateTime studentBirthDate;
+        private int studentGender;
 
-        public string Student_fio
+        public string StudentFIO
         {
-            get { return student_fio; }
-            set { student_fio = value; }
+            get { return studentFIO; }
+            set { studentFIO = value; }
         }
 
-        public DateTime Student_birth_date
+        public DateTime StudentBirthDate
         {
-            get { return student_birth_date; }
-            set { student_birth_date = value; }
+            get { return studentBirthDate; }
+            set { studentBirthDate = value; }
         }
 
-        public int Student_gender
+        public int StudentGender
         {
-            get { return student_gender; }
-            set { student_gender = value; }
+            get { return studentGender; }
+            set { studentGender = value; }
         }
         
 

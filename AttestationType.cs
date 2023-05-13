@@ -1,4 +1,4 @@
-namespace Exams_performance
+namespace ExamsPerformance
 {
     using System;
     using System.Collections.Generic;
@@ -7,10 +7,10 @@ namespace Exams_performance
     using System.Data.Entity.Spatial;
 
     [Table("Attestation_type")]
-    public partial class Attestation_type
+    public partial class AttestationType
     {
         [Key]
-        public string attestation_type { get; set; }
+        public string AttestationTypeName { get; set; }
     }
 
 }

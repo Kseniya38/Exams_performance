@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 
 
-namespace Exams_performance
+namespace ExamsPerformance
 {
     public partial class AppContext : DbContext
     {
@@ -13,7 +13,7 @@ namespace Exams_performance
             //Database.SetInitializer<AppContext>(null);
         }
     
-        public DbSet<Attestation_type> Attestation_type { get; set; }
+        public DbSet<AttestationType> AttestationType { get; set; }
         public DbSet<Attestation> Attestation { get; set; }
         public DbSet<Group> Group { get; set; }
         public DbSet<Student> Student { get; set; }
@@ -21,7 +21,7 @@ namespace Exams_performance
         public DbSet<Teacher> Teacher { get; set; }
         public DbSet<User> User { get; set; }
 
-        public DbSet<Students_in_group> Students_in_group { get; set; }
+        public DbSet<StudentsInGroup> StudentsInGroup { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

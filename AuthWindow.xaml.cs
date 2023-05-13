@@ -14,7 +14,7 @@ using System.Windows.Shapes;
 using System.Data.Entity;
 
 
-namespace Exams_performance
+namespace ExamsPerformance
 {
     public partial class AuthWindow : Window
     {
@@ -27,13 +27,13 @@ namespace Exams_performance
 
         private void LoginButtonClick(object sender, RoutedEventArgs e)
         {
-            string user_login = Login_TextBox.Text.Trim();
-            string user_password = Password_TextBox.Password.Trim();
+            string userLogin = LoginTextBox.Text.Trim();
+            string userPassword = PasswordTextBox.Password.Trim();
 
             List<User> users = db.User.ToList();
             foreach (var item in users)
             {
-                if (item.User_login == user_login && item.User_password == user_password)
+                if (item.UserLogin == userLogin && item.UserPassword == userPassword)
                 {
                     new MainWindow().Show();
                     Hide();

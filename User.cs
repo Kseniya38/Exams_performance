@@ -6,34 +6,34 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Exams_performance
+namespace ExamsPerformance
 {
     [Table("User")]
     public class User
     {
         [Key]
-        public int user_id { get; set; }
+        public int UserId { get; set; }
 
-        private string user_login, user_password;
+        private string userLogin, userPassword;
 
-        public string User_login
+        public string UserLogin
         {
-            get { return user_login; }
-            set { user_login = value; }
+            get { return userLogin; }
+            set { userLogin = value; }
         }
 
-        public string User_password
+        public string UserPassword
         {
-            get { return user_password; }
-            set { user_password = value; }
+            get { return userPassword; }
+            set { userPassword = value; }
         }
 
         public User() { }
 
-        public User(string user_login, string user_password)
+        public User(string userLogin, string userPassword)
         {
-            this.user_login = user_login;
-            this.user_password = user_password;
+            this.userLogin = userLogin;
+            this.userPassword = userPassword;
         }
     }
 }

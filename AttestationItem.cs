@@ -1,38 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Exams_performance
+namespace ExamsPerformance
 {
     public class AttestationItem
     {
-
-        public AttestationItem(string student_fio, string teacher_fio, string subject_name, DateTime attestation_date, string attestation_type, int? mark, string result)
+        public AttestationItem(Student student, Teacher teacher, Subject subject, DateTime attestationDate, string attestationTypeName, int? mark, string result)
         {
-            this.student_fio = student_fio;
-            this.teacher_fio = teacher_fio;
-            this.subject_name = subject_name;
-            this.attestation_date = attestation_date;
-            this.attestation_type = attestation_type;
-            this.mark = mark;
-            this.result = result;
+            this.Student = student;
+            this.Teacher = teacher;
+            this.Subject = subject;
+            this.AttestationDate = attestationDate;
+            this.AttestationTypeName = attestationTypeName;
+            this.Mark = mark;
+            this.Result = result;
         }
 
         public AppContext db = new AppContext();
 
-        public string student_fio { get; set; }
-        public string teacher_fio { get; set; }
-        public string subject_name { get; set; }
-        public DateTime attestation_date { get; set; }
-        public string attestation_type { get; set; }
-        public int? mark { get; set; }
-        public string result { get; set; }
+        public Student Student { get; set; }
+        public Teacher Teacher { get; set; }
+        public Subject Subject { get; set; }
+        public DateTime AttestationDate { get; set; }
+        public string AttestationTypeName { get; set; }
+        public int? Mark { get; set; }
+        public string Result { get; set; }
 
+        public string GetStudentFIO(Student student)
+        {
+            return student.StudentFIO;
+        }
+
+        public string GetTeacherFIO(Teacher teacher)
+        {
+            return teacher.TeacherFIO;
+        }
+
+        public string GetSubjectName(Subject subject)
+        {
+            return subject.SubjectName;
+        }
 
     }
 }
-
-
-    
 
 
 

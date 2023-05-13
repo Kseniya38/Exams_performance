@@ -1,9 +1,9 @@
-﻿<Window x:Name="AddWindow" x:Class="Exams_performance.MainWindow"
+﻿<Window x:Name="AddWindow" x:Class="ExamsPerformance.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Exams_performance"
+        xmlns:local="clr-namespace:ExamsPerformance"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
          Title="ЭКЗАМЕНАЦИОННАЯ УСПЕВАЕМОСТЬ СТУДЕНТОВ: Просмотр и редактирование записей" Height="600" Width="1000" FontSize="16" Background="#FFD4D4D4" BorderBrush="Black" Icon="Resources/study.ico">
@@ -26,15 +26,15 @@
         <Label Content="Просмотр и редактирование записей" Grid.Row="0" HorizontalAlignment="Center" Width="Auto" VerticalAlignment="Center" Margin="0" Grid.ColumnSpan="4" FontSize="26" Height="45" Grid.Column="0" FontWeight="Bold" />
 
         <ListBox Grid.Row="1" Grid.Column="0" x:Name="RecordsList_ListBox" Grid.ColumnSpan="7">
-            <DataGrid CanUserSortColumns="True" Height="320" Width="930" x:Name="attestations_Grid" Loaded="GridLoaded" AutoGenerateColumns="False" RowBackground="Lavender" AlternatingRowBackground="LavenderBlush">
+            <DataGrid CanUserSortColumns="True" Height="320" Width="930" x:Name="attestationsGrid" Loaded="GridLoaded" AutoGenerateColumns="False" RowBackground="Lavender" AlternatingRowBackground="LavenderBlush">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ФИО студента" Binding="{Binding Path=student_fio}" Width="130" FontSize="14" />
-                    <DataGridTextColumn Header="ФИО преподавателя" Binding="{Binding Path=teacher_fio}" Width="160" FontSize="14"/>
-                    <DataGridTextColumn Header="Предмет" Binding="{Binding Path=subject_name}" Width="130" FontSize="14"/>
-                    <DataGridTextColumn Header="Вид аттестации" Binding="{Binding Path=attestation_type}" Width="132" FontSize="14"/>
-                    <DataGridTextColumn Header="Дата" Width="120" Binding="{Binding Path=attestation_date}" FontSize="14"/>
-                    <DataGridTextColumn Header="Балл" Width="120" Binding="{Binding Path=mark}" FontSize="14"/>
-                    <DataGridTextColumn Header="Оценка" Width="130" Binding="{Binding Path=result}" FontSize="14"/>
+                    <DataGridTextColumn Header="ФИО студента" Binding="{Binding Path=Student.StudentFIO}" Width="130" FontSize="14" />
+                    <DataGridTextColumn Header="ФИО преподавателя" Binding="{Binding Path=Teacher.TeacherFIO}" Width="160" FontSize="14"/>
+                    <DataGridTextColumn Header="Предмет" Binding="{Binding Path=Subject.SubjectName}" Width="130" FontSize="14"/>
+                    <DataGridTextColumn Header="Вид аттестации" Binding="{Binding Path=AttestationTypeName}" Width="132" FontSize="14"/>
+                    <DataGridTextColumn Header="Дата" Width="120" Binding="{Binding Path=AttestationDate}" FontSize="14"/>
+                    <DataGridTextColumn Header="Балл" Width="120" Binding="{Binding Path=Mark}" FontSize="14"/>
+                    <DataGridTextColumn Header="Оценка" Width="130" Binding="{Binding Path=Result}" FontSize="14"/>
                 </DataGrid.Columns>
             </DataGrid>
 

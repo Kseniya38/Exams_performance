@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 
-namespace Exams_performance
+namespace ExamsPerformance
 {
     public partial class MainWindow : Window
     {
@@ -24,28 +24,26 @@ namespace Exams_performance
             InitializeComponent();
         }
 
-        public string student_fio, teacher_fio, subject_name;
-        private void GridLoaded(object sender, RoutedEventArgs e) //при загрузке окна подгружаются все данные из таблицы Аттестация бд
+        public Student student;
+        public Teacher teacher;
+        public Subject subject;
+        private void GridLoaded(object sender, RoutedEventArgs e) 
         {
-            List<Attestation> attestation_data = db.Attestation.ToList();
-            List<AttestationItem> attestation_item_list = new List<AttestationItem>();
+            List<Attestation> attestationData = db.Attestation.ToList();
+            List<AttestationItem> attestationItemList = new List<AttestationItem>();
 
-            for (int i = 0; i < attestation_data.Count; i++)
+            for (int i = 0; i < attestationData.Count; i++)
             {
-                student_fio = db.Student.Find(attestation_data[i].student_id).Student_fio;
-                teacher_fio = db.Teacher.Find(attestation_data[i].teacher_id).Teacher_fio;
-                subject_name = db.Subject.Find(attestation_data[i].subject_id).Subject_name;
+                student = db.Student.Find(attestationData[i].StudentId);
+                teacher = db.Teacher.Find(attestationData[i].TeacherId);
+                subject = db.Subject.Find(attestationData[i].SubjectId);
 
-                attestation_item_list.Add(new AttestationItem(student_fio, teacher_fio, subject_name, attestation_data[i].attestation_date, attestation_data[i].attestation_type, attestation_data[i].mark, attestation_data[i].result));
+                attestationItemList.Add(new AttestationItem(student, teacher, subject, attestationData[i].AttestationDate, attestationData[i].AttestationTypeName, attestationData[i].Mark, attestationData[i].Result));
             }
 
-            attestations_Grid.ItemsSource = attestation_item_list;
-            
-
-
-            //var qwe = db.Attestation.Local.ToBindingList();
-            
+            attestationsGrid.ItemsSource = attestationItemList;
         }
+        //var qwe = db.Attestation.Local.ToBindingList();
 
         //private void GridMouse_Up(object sender, MouseButtonEventArgs e) // действие при одинарном клике на строку
         //{
@@ -56,8 +54,8 @@ namespace Exams_performance
         private void AddButtonClick(object sender, RoutedEventArgs e)
         {
             //MessageBox.Show("Нажали кнопку Добавить новую запись");
-            AddWindow add_window = new AddWindow();
-            add_window.Show();
+            AddWindow addWindow = new AddWindow();
+            addWindow.Show();
             Hide();
         }
 
@@ -73,9 +71,9 @@ namespace Exams_performance
 
         private void CreateDocButtonClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Нажали кнопку Сформировать документ");
-            CreateDocWindow add_window = new CreateDocWindow();
-            add_window.Show();
+            //MessageBox.Show("Нажали кнопку Сформировать документ");
+            CreateDocWindow addWindow = new CreateDocWindow();
+            addWindow.Show();
         }
     }
 }

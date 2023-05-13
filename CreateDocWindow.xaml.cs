@@ -12,11 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Exams_performance
+namespace ExamsPerformance
 {
-    /// <summary>
-    /// Логика взаимодействия для CreateDocWindow.xaml
-    /// </summary>
     public partial class CreateDocWindow : Window
     {
         public AppContext db = new AppContext();
@@ -27,17 +24,17 @@ namespace Exams_performance
 
         private void DataLoadingToComboBoxes(object sender, RoutedEventArgs e)
         {
-            List<string> docs_list = new List<string> { "Справка об успеваемости", "Приложение к диплому", "Ведомость по предмету" };
-            Docs_ComboBox.ItemsSource = docs_list;
+            List<string> docsList = new List<string> { "Справка об успеваемости", "Приложение к диплому", "Ведомость по предмету" };
+            DocsComboBox.ItemsSource = docsList;
 
-            List<Student> students_list = db.Student.ToList();
-            Student_ComboBox.ItemsSource = students_list;
+            List<Student> studentsList = db.Student.ToList();
+            StudentComboBox.ItemsSource = studentsList;
 
-            List<Subject> subjects_list = db.Subject.ToList();
-            Subject_ComboBox.ItemsSource = subjects_list;
+            List<Subject> subjectsList = db.Subject.ToList();
+            SubjectComboBox.ItemsSource = subjectsList;
 
-            List<Group> group_list = db.Group.ToList();
-            Group_ComboBox.ItemsSource = group_list;
+            List<Group> groupList = db.Group.ToList();
+            GroupComboBox.ItemsSource = groupList;
         }
         
 

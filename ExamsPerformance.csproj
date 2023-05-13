@@ -193,7 +193,7 @@
       <DependentUpon>CreateDocWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Student.cs" />
-    <Compile Include="Students_in_group.cs" />
+    <Compile Include="StudentsInGroup.cs" />
     <Compile Include="Subject.cs" />
     <Compile Include="Teacher.cs" />
     <Compile Include="User.cs" />
@@ -218,7 +218,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Attestation.cs" />
-    <Compile Include="Attestation_type.cs" />
+    <Compile Include="AttestationType.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
