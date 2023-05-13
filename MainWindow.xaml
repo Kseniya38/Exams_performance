@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
          Title="ЭКЗАМЕНАЦИОННАЯ УСПЕВАЕМОСТЬ СТУДЕНТОВ: Просмотр и редактирование записей" Height="600" Width="1000" FontSize="16" Background="#FFD4D4D4" BorderBrush="Black" Icon="Resources/study.ico">
-    <Grid Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="530" Width="945">
+    <Grid Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="530" Width="945" MouseUp="GridMouseUp">
         <Grid.RowDefinitions>
             <RowDefinition Height="70" />
             <RowDefinition Height="330"/>

@@ -104,20 +104,17 @@ namespace ExamsPerformance
                         subjectId = item.SubjectId;
                     }
                 }
-
-                //MessageBox.Show($"student {student_id}, teacher {teacher_id}, subject {subject_id}");
-
+                                
                 Attestation attestation = new Attestation(studentId, teacherId, subjectId, attestationDate, attestationType, mark, result);
                 db.Attestation.Add(attestation);
                 db.SaveChanges();
 
-                MessageBox.Show("Новая запись успешно добавлена!");
+                MessageBox.Show("Новая запись успешно добавлена!", "Сообщение");
             }
         }
 
         private void CancelButtonClick(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Нажали кнопку Отменить");
+        {            
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Hide();

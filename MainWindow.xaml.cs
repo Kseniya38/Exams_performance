@@ -45,11 +45,11 @@ namespace ExamsPerformance
         }
         //var qwe = db.Attestation.Local.ToBindingList();
 
-        //private void GridMouse_Up(object sender, MouseButtonEventArgs e) // действие при одинарном клике на строку
-        //{
-        //    AttestationItem selected_attestation = attestations_Grid.SelectedItem as AttestationItem;
-        //    //MessageBox.Show(" Студент: " + selected_attestation.student_fio + "\n Преподаватель: " + selected_attestation.teacher_fio + "\n Предмет: " + selected_attestation.subject_name + "\n Дата: " + selected_attestation.attestation_date);
-        //}
+        private void GridMouseUp(object sender, MouseButtonEventArgs e) // действие при одинарном клике на строку
+        {
+            AttestationItem selectedAttestation = attestationsGrid.SelectedItem as AttestationItem;
+            //MessageBox.Show("Выбрана запись: \n Студент: " + selectedAttestation.Student.StudentFIO + "\n Преподаватель: " + selectedAttestation.Teacher.TeacherFIO + "\n Предмет: " + selectedAttestation.Subject.SubjectName + "\n Дата: " + selectedAttestation.AttestationDate, "Выбрана запись");
+        }
 
         private void AddButtonClick(object sender, RoutedEventArgs e)
         {
@@ -61,7 +61,19 @@ namespace ExamsPerformance
 
         private void DeleteButtonClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Нажали кнопку Удалить");
+            //MessageBox.Show("Нажали кнопку Удалить");
+            AttestationItem selectedAttestation = attestationsGrid.SelectedItem as AttestationItem;
+            if (MessageBox.Show("Вы уверены, что хотите удалить следующую запись? Отменить это действие будет невозможно." + "\n Студент: " + selectedAttestation.Student.StudentFIO + "\n Преподаватель: " + selectedAttestation.Teacher.TeacherFIO + "\n Предмет: " + selectedAttestation.Subject.SubjectName + "\n Дата: " + selectedAttestation.AttestationDate,
+                    "Предупреждение",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                Attestation attestation = db.Attestation.Find(selectedAttestation.Student.StudentId, selectedAttestation.Subject.SubjectId, selectedAttestation.AttestationDate);
+                MessageBox.Show($"StudentId: {attestation.StudentId}, SubjectId: {attestation.SubjectId}, TeacherId: {attestation.TeacherId}");
+                db.Attestation.Remove(attestation);
+                db.SaveChanges();
+            }
+
         }
 
         private void SaveChagesButtonClick(object sender, RoutedEventArgs e)
