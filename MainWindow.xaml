@@ -26,7 +26,7 @@
         <Label Content="Просмотр и редактирование записей" Grid.Row="0" HorizontalAlignment="Center" Width="Auto" VerticalAlignment="Center" Margin="0" Grid.ColumnSpan="4" FontSize="26" Height="45" Grid.Column="0" FontWeight="Bold" />
 
         <ListBox Grid.Row="1" Grid.Column="0" x:Name="RecordsList_ListBox" Grid.ColumnSpan="7">
-            <DataGrid CanUserSortColumns="True" Height="320" Width="930" x:Name="attestationsGrid" Loaded="GridLoaded" AutoGenerateColumns="False" RowBackground="Lavender" AlternatingRowBackground="LavenderBlush">
+            <DataGrid CanUserSortColumns="True" Height="320" Width="930" x:Name="attestationsGrid" Loaded="GridLoaded" AutoGenerateColumns="False" RowBackground="Lavender" AlternatingRowBackground="LavenderBlush" CanUserResizeRows="False" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ФИО студента" Binding="{Binding Path=Student.StudentFIO}" Width="130" FontSize="14" />
                     <DataGridTextColumn Header="ФИО преподавателя" Binding="{Binding Path=Teacher.TeacherFIO}" Width="160" FontSize="14"/>
@@ -40,10 +40,10 @@
 
         </ListBox>
 
-        <Button  Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Content="Добавить новую запись" Margin="10,0,0,10" Width="230" x:Name="AddButton" Click="AddButtonClick" Height="40" />
+        <Button  Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Content="Добавить новую запись" Margin="10,0,0,10" Width="230" x:Name="AddButton" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Click="AddButtonClick" Height="40" />
         <Button  Grid.Row="2" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Удалить запись" Margin="0, 10" Width="160" Background="#FFE62D68" x:Name="CancelButton" Click="DeleteButtonClick" Height="40" BorderBrush="#FFE62D68"/>
-        <Button  Grid.Row="2" Grid.Column="3" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Сохранить изменения" Margin="0, 0,10,10" Width="190" x:Name="SaveChangesButton" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Click="SaveChagesButtonClick" Height="40" />
-        <Button  Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Сформировать документ" Margin="10,0,0,0" Width="230" x:Name="CreateDocButton" Click="CreateDocButtonClick" Height="40" Grid.ColumnSpan="2"/>
+        <Button  Grid.Row="2" Grid.Column="3" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Изменить запись" Margin="0, 0,10,10" Width="190" x:Name="EditButton" Click="EditButtonClick" Height="40" />
+        <Button  Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Сформировать документ" Margin="10,0,0,0" Width="230" x:Name="CreateDocButton" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Click="CreateDocButtonClick" Height="40" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

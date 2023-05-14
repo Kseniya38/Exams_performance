@@ -17,7 +17,7 @@ namespace ExamsPerformance
     public partial class AddWindow : Window
     {
         public AppContext db = new AppContext();
-        int studentId, teacherId, subjectId;
+        public int studentId, teacherId, subjectId;
 
         public AddWindow()
         {
@@ -28,13 +28,13 @@ namespace ExamsPerformance
         {
             bool correct = true;
             bool markIsInt = false;
-            string studentFIO = StudentFIOComboBox.Text.Trim();
-            string teacherFIO = TeacherFIOComboBox.Text.Trim();
-            string subjectName = SubjectComboBox.Text.Trim();
-            string attestationTypeName = AttestationTypeComboBox.Text.Trim();
-            string result = ResultComboBox.Text.Trim();
+            string studentFIO = studentFIOComboBox.Text.Trim();
+            string teacherFIO = teacherFIOComboBox.Text.Trim();
+            string subjectName = subjectComboBox.Text.Trim();
+            string attestationTypeName = attestationTypeComboBox.Text.Trim();
+            string result = resultComboBox.Text.Trim();
 
-            string markStr = MarkTextBox.Text.Trim();
+            string markStr = markTextBox.Text.Trim();
             int? mark = null;
 
             bool requiredFields = CheckRequiredFields(studentFIO, teacherFIO, subjectName, attestationTypeName);
@@ -45,12 +45,13 @@ namespace ExamsPerformance
                 if (markStr == string.Empty && result != "неявка" && result != string.Empty)
                 {
                     correct = false;
-                    MarkTextBox.Clear();
-                    MarkTextBox.ToolTip = "Не указано количество баллов";
+                    markTextBox.Clear();
+                    markTextBox.ToolTip = "Не указано количество баллов";
                     MessageBox.Show("Количество баллов не указывается только в случае неявки");
                 }
                 else if (markStr == string.Empty && result == string.Empty)
                 {
+                    markTextBox.Background = Brushes.Transparent;
                     correct = true;
                 }
                 else if (markStr != string.Empty)
@@ -60,8 +61,8 @@ namespace ExamsPerformance
 
                     if (markIsInt == false)
                     {
-                        MarkTextBox.ToolTip = "Количество баллов должно быть от 0 до 100 включительно";
-                        MarkTextBox.Background = Brushes.Pink;
+                        markTextBox.ToolTip = "Количество баллов должно быть от 0 до 100 включительно";
+                        markTextBox.Background = Brushes.Pink;
                     }
                     else
                     {
@@ -72,11 +73,11 @@ namespace ExamsPerformance
             }
             else { return; }
 
-            DateTime attestationDate = AttestationDataDataPicker.SelectedDate.Value;
+            DateTime attestationDate = attestationDateDatePicker.SelectedDate.Value;
 
             if (correct == true && (markIsInt == true || mark.HasValue == false))
             {
-                ResultComboBox.Background = Brushes.Transparent;
+                resultComboBox.Background = Brushes.Transparent;
 
                 List<Student> studentsList = db.Student.ToList();
                 foreach (var item in studentsList)
@@ -111,10 +112,6 @@ namespace ExamsPerformance
 
                 MessageBox.Show("Новая запись успешно добавлена!", "Сообщение");
             }
-            /*else
-            {
-                MessageBox.Show("К сожалению, запись не добавлена. Проверьте правильность заполнения полей.");
-            }*/
         }
 
         private void CancelButtonClick(object sender, RoutedEventArgs e)
@@ -127,19 +124,19 @@ namespace ExamsPerformance
         private void DataLoadingToComboBoxes(object sender, RoutedEventArgs e)
         {
             List<Student> studentsList = db.Student.ToList();
-            StudentFIOComboBox.ItemsSource = studentsList;
+            studentFIOComboBox.ItemsSource = studentsList;
 
             List<Teacher> teachersList = db.Teacher.ToList();
-            TeacherFIOComboBox.ItemsSource = teachersList;
+            teacherFIOComboBox.ItemsSource = teachersList;
 
             List<Subject> subjectsList = db.Subject.ToList();
-            SubjectComboBox.ItemsSource = subjectsList;
+            subjectComboBox.ItemsSource = subjectsList;
 
             List<AttestationType> attestationTypeList = db.AttestationType.ToList();
-            AttestationTypeComboBox.ItemsSource = attestationTypeList;
+            attestationTypeComboBox.ItemsSource = attestationTypeList;
 
             var resultList = new List<string>() { "неудовлетворительно", "удовлетворительно", "хорошо", "отлично", "неявка" };
-            ResultComboBox.ItemsSource = resultList;
+            resultComboBox.ItemsSource = resultList;
         }
 
         private bool CheckMarkMatchResult(int? mark, string result, bool correct)
@@ -147,37 +144,37 @@ namespace ExamsPerformance
             if (mark < 0 || mark > 100)
             {
                 correct = false;
-                MarkTextBox.ToolTip = "Количество баллов должно быть от 0 до 100 включительно";
-                MarkTextBox.Background = Brushes.Pink;
+                markTextBox.ToolTip = "Количество баллов должно быть от 0 до 100 включительно";
+                markTextBox.Background = Brushes.Pink;
             }
             else
             {
-                MarkTextBox.ToolTip = "Количество баллов от 0 до 100 включительно";
-                MarkTextBox.Background = Brushes.Transparent;
+                markTextBox.ToolTip = "Количество баллов от 0 до 100 включительно";
+                markTextBox.Background = Brushes.Transparent;
 
                 if (mark < 62 && result != "неудовлетворительно")
                 {
                     correct = false;
-                    ResultComboBox.ToolTip = "Этому количеству баллов соответствует оценка \"неудовлетворительно\"";
-                    ResultComboBox.Background = Brushes.Pink;
+                    resultComboBox.ToolTip = "Этому количеству баллов соответствует оценка \"неудовлетворительно\"";
+                    resultComboBox.Background = Brushes.Pink;
                 }
                 else if (mark > 61 && mark < 76 && result != "удовлетворительно")
                 {
                     correct = false;
-                    ResultComboBox.ToolTip = "Этому количеству баллов соответствует оценка \"удовлетворительно\"";
-                    ResultComboBox.Background = Brushes.Pink;
+                    resultComboBox.ToolTip = "Этому количеству баллов соответствует оценка \"удовлетворительно\"";
+                    resultComboBox.Background = Brushes.Pink;
                 }
                 else if (mark > 75 && mark < 91 && result != "хорошо")
                 {
                     correct = false;
-                    ResultComboBox.ToolTip = "Этому количеству баллов соответствует оценка \"хорошо\"";
-                    ResultComboBox.Background = Brushes.Pink;
+                    resultComboBox.ToolTip = "Этому количеству баллов соответствует оценка \"хорошо\"";
+                    resultComboBox.Background = Brushes.Pink;
                 }
                 else if (mark > 90 && result != "отлично")
                 {
                     correct = false;
-                    ResultComboBox.ToolTip = "Этому количеству баллов соответствует оценка \"отлично\"";
-                    ResultComboBox.Background = Brushes.Pink;
+                    resultComboBox.ToolTip = "Этому количеству баллов соответствует оценка \"отлично\"";
+                    resultComboBox.Background = Brushes.Pink;
                 }
 
             }
@@ -187,41 +184,41 @@ namespace ExamsPerformance
         private bool CheckRequiredFields(string studentFIO, string teacherFIO, string subjectName, string attestationTypeName)
         {
             bool requiredFields = true;
-            StudentFIOComboBox.Background = Brushes.Transparent;
-            TeacherFIOComboBox.Background = Brushes.Transparent;
-            SubjectComboBox.Background = Brushes.Transparent;
-            AttestationTypeComboBox.Background = Brushes.Transparent;
-            AttestationDataDataPicker.Background = Brushes.Transparent;
+            studentFIOComboBox.Background = Brushes.Transparent;
+            teacherFIOComboBox.Background = Brushes.Transparent;
+            subjectComboBox.Background = Brushes.Transparent;
+            attestationTypeComboBox.Background = Brushes.Transparent;
+            attestationDateDatePicker.Background = Brushes.Transparent;
 
             if (studentFIO == string.Empty)
             {
                 requiredFields = false;
-                StudentFIOComboBox.ToolTip = "Заполните это поле";
-                StudentFIOComboBox.Background = Brushes.Pink;
+                studentFIOComboBox.ToolTip = "Заполните это поле";
+                studentFIOComboBox.Background = Brushes.Pink;
             }
             if (teacherFIO == string.Empty)
             {
                 requiredFields = false;
-                TeacherFIOComboBox.ToolTip = "Заполните это поле";
-                TeacherFIOComboBox.Background = Brushes.Pink; ;
+                teacherFIOComboBox.ToolTip = "Заполните это поле";
+                teacherFIOComboBox.Background = Brushes.Pink; ;
             }
             if (subjectName == string.Empty)
             {
                 requiredFields = false;
-                SubjectComboBox.ToolTip = "Заполните это поле";
-                SubjectComboBox.Background = Brushes.Pink; ;
+                subjectComboBox.ToolTip = "Заполните это поле";
+                subjectComboBox.Background = Brushes.Pink; ;
             }
             if (attestationTypeName == string.Empty)
             {
                 requiredFields = false;
-                AttestationTypeComboBox.ToolTip = "Заполните это поле";
-                AttestationTypeComboBox.Background = Brushes.Pink; ;
+                attestationTypeComboBox.ToolTip = "Заполните это поле";
+                attestationTypeComboBox.Background = Brushes.Pink; ;
             }
-            if (AttestationDataDataPicker.SelectedDate.HasValue == false)
+            if (attestationDateDatePicker.SelectedDate.HasValue == false)
             {
                 requiredFields = false;
-                AttestationDataDataPicker.ToolTip = "Заполните это поле";
-                AttestationDataDataPicker.Background = Brushes.Pink;
+                attestationDateDatePicker.ToolTip = "Заполните это поле";
+                attestationDateDatePicker.Background = Brushes.Pink;
             }
 
             return requiredFields;
