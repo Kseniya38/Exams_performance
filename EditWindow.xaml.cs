@@ -196,11 +196,9 @@ namespace ExamsPerformance
                     resultEditComboBox.ToolTip = "Этому количеству баллов соответствует оценка \"отлично\"";
                     resultEditComboBox.Background = Brushes.Pink;
                 }
-
             }
+
             return correct;
         }
-
-
     }
 }
