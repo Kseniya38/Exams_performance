@@ -63,6 +63,11 @@ namespace ExamsPerformance
 
         private void DeleteButtonClick(object sender, RoutedEventArgs e)
         {
+            if (attestationsGrid.SelectedItem == null)
+            {
+                MessageBox.Show("Не выбрана запись. Необходимо выбрать в таблице запись, которую вы хотите удалить.", "Ошибка");
+                return;
+            }
 
             AttestationItem selectedAttestation = attestationsGrid.SelectedItem as AttestationItem;
             if (MessageBox.Show("Вы уверены, что хотите удалить следующую запись?\nОтменить это действие будет невозможно.\n" + "\n Студент: " + selectedAttestation.Student.StudentFIO + "\n Преподаватель: " + selectedAttestation.Teacher.TeacherFIO + "\n Предмет: " + selectedAttestation.Subject.SubjectName + "\n Дата: " + selectedAttestation.AttestationDate,
@@ -101,6 +106,7 @@ namespace ExamsPerformance
                 EditWindow editWindow = new EditWindow(this, selectedIndex);
                 editWindow.Show();
             }
+            else { MessageBox.Show("Не выбрана запись. Необходимо выбрать в таблице запись, которую вы хотите изменить.", "Ошибка"); }
         }
 
         private void CreateDocButtonClick(object sender, RoutedEventArgs e)
