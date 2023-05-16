@@ -10,9 +10,6 @@ using System.Windows;
 
 namespace ExamsPerformance
 {
-    /// <summary>
-    /// Логика взаимодействия для App.xaml
-    /// </summary>
     public partial class App : Application
     {
         private static Logger _logger = LogManager.GetCurrentClassLogger();

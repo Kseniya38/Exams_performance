@@ -8,10 +8,7 @@ namespace ExamsPerformance
 {
     public partial class AppContext : DbContext
     {
-        public AppContext() : base("AppContext")
-        {
-            //Database.SetInitializer<AppContext>(null);
-        }
+        public AppContext() : base("AppContext"){ }
     
         public DbSet<AttestationType> AttestationType { get; set; }
         public DbSet<Attestation> Attestation { get; set; }
