@@ -37,6 +37,5 @@ namespace ExamsPerformance
             this.Mark = mark;
             this.Result = result;
         }
-
     }
 }

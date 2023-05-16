@@ -29,6 +29,5 @@
         <PasswordBox x:Name="PasswordTextBox" Grid.Row="2" Grid.Column="1" Margin="10,0" Height="40"/>
 
         <Button  Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="Войти" Margin="10,10" Width="140" x:Name="LoginButton" Click="LoginButtonClick" Height="40" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Grid.ColumnSpan="2"/>
-
     </Grid>
 </Window>

@@ -50,8 +50,5 @@
 
         <Button  Grid.Row="6" Grid.Column="3" VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="Сохранить изменения" Margin="0,0,0,0" Width="200" FontWeight="Bold" Style="{DynamicResource MaterialDesignRaisedAccentButton}" x:Name="SaveChangesButton" Click="SaveChangesButtonClick" Height="40"/>
         <Button  Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Left" Content="Отменить" Margin="10,0,0,0" Width="140" x:Name="CancelButton" Click="CancelButtonClick" Height="40" Grid.Column="1"/>
-
-
-
     </Grid>
 </Window>

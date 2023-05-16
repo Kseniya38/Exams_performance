@@ -28,21 +28,25 @@ namespace ExamsPerformance
         {
             string userLogin = LoginTextBox.Text.Trim();
             string userPassword = PasswordTextBox.Password.Trim();
-
+            bool correct = false;
             List<User> users = db.User.ToList();
             foreach (var item in users)
             {
                 if (item.UserLogin == userLogin && item.UserPassword == userPassword)
                 {
-                    new MainWindow().Show();
-                    Hide();
-                    return;
-                }
-                else
-                {
-                    MessageBox.Show("Неверный логин или пароль");
+                    correct = true;
                     break;
-                }
+                }                
+            }
+            if (correct)
+            {
+                new MainWindow().Show();
+                Hide();
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Неверный логин или пароль");
             }
         }
     }
