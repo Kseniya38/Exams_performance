@@ -59,7 +59,7 @@ namespace ExamsPerformance
             finally
             {
                 _logger.Error(exception, message);
-                System.IO.File.AppendAllText("log.txt", message + "\n" + exception.Message + "\n");
+                System.IO.File.AppendAllText("log.txt", "\n" + DateTime.Now + "\n" + message + "\n" + exception.Message + "\n");
             }
         }
     }
