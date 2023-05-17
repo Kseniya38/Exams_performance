@@ -46,8 +46,6 @@ namespace ExamsPerformance
 
             bool requiredFields = CheckRequiredFields(studentFIO, teacherFIO, subjectName, attestationTypeName);
 
-
-
             if (requiredFields == true)
             {
                 if (markStr == string.Empty && result != "неявка" && result != string.Empty)
@@ -182,19 +180,19 @@ namespace ExamsPerformance
             {
                 requiredFields = false;
                 teacherFIOComboBox.ToolTip = "Заполните это поле";
-                teacherFIOComboBox.Background = Brushes.Pink; ;
+                teacherFIOComboBox.Background = Brushes.Pink; 
             }
             if (subjectName == string.Empty)
             {
                 requiredFields = false;
                 subjectComboBox.ToolTip = "Заполните это поле";
-                subjectComboBox.Background = Brushes.Pink; ;
+                subjectComboBox.Background = Brushes.Pink; 
             }
             if (attestationTypeName == string.Empty)
             {
                 requiredFields = false;
                 attestationTypeComboBox.ToolTip = "Заполните это поле";
-                attestationTypeComboBox.Background = Brushes.Pink; ;
+                attestationTypeComboBox.Background = Brushes.Pink; 
             }
             if (attestationDateDatePicker.SelectedDate.HasValue == false)
             {
@@ -224,6 +222,50 @@ namespace ExamsPerformance
                 }
             }
             else { markTextBox.Background = Brushes.Transparent; }
+        }
+
+        private void StudentFIOComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Student student = studentFIOComboBox.SelectedItem as Student;
+            if (student == null)
+            {
+                studentFIOComboBox.ToolTip = "Заполните это поле";
+                studentFIOComboBox.Background = Brushes.Pink;
+            }
+            else { studentFIOComboBox.Background = Brushes.Transparent; }
+        }
+
+        private void TeacherFIOComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Teacher teacher = teacherFIOComboBox.SelectedItem as Teacher;
+            if (teacher == null)
+            {
+                teacherFIOComboBox.ToolTip = "Заполните это поле";
+                teacherFIOComboBox.Background = Brushes.Pink; 
+            }
+            else { teacherFIOComboBox.Background = Brushes.Transparent; }
+        }
+
+        private void SubjectComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Subject subject = subjectComboBox.SelectedItem as Subject;
+            if (subject == null)
+            {
+                subjectComboBox.ToolTip = "Заполните это поле";
+                subjectComboBox.Background = Brushes.Pink; 
+            }
+            else { subjectComboBox.Background = Brushes.Transparent; }
+        }
+
+        private void AttestationTypeComboBoxSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            AttestationType attestationType = attestationTypeComboBox.SelectedItem as AttestationType;
+            if (attestationType == null)
+            {
+                attestationTypeComboBox.ToolTip = "Заполните это поле";
+                attestationTypeComboBox.Background = Brushes.Pink; 
+            }
+            else { attestationTypeComboBox.Background = Brushes.Transparent; }
         }
     }
 }

@@ -28,16 +28,16 @@
         <TextBlock Text="Добавление новой записи" Grid.Row="0" HorizontalAlignment="Center" Width="Auto" VerticalAlignment="Center" Margin="0,20" Grid.ColumnSpan="4" FontSize="28" FontWeight="Bold" />
 
         <Label Content="Студент" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Width="180" VerticalAlignment="Bottom" Height="40" Margin="0,0,0,0" FontSize="20"/>
-        <ComboBox materialDesign:HintAssist.Hint="Выберите или начните вводить фамилию студента" Style="{StaticResource MaterialDesignFloatingHintComboBox}" x:Name="studentFIOComboBox" Grid.Row="1" Grid.Column="1" DisplayMemberPath="StudentFIO" Grid.ColumnSpan="3" Height="40" Margin="10,0,0,10"/>
+        <ComboBox materialDesign:HintAssist.Hint="Выберите или начните вводить фамилию студента" Style="{StaticResource MaterialDesignFloatingHintComboBox}" x:Name="studentFIOComboBox" SelectionChanged="StudentFIOComboBoxSelectionChanged" Grid.Row="1" Grid.Column="1" DisplayMemberPath="StudentFIO" Grid.ColumnSpan="3" Height="40" Margin="10,0,0,10"/>
 
         <Label Content="Преподаватель" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" Width="180" VerticalAlignment="Bottom" Height="40" Margin="0,0,0,0" FontSize="20"/>
-        <ComboBox materialDesign:HintAssist.Hint="Выберите или начните вводить фамилию преподавателя" Style="{StaticResource MaterialDesignFloatingHintComboBox}" x:Name="teacherFIOComboBox" DisplayMemberPath="TeacherFIO" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="10,0,0,10" Height="40"/>
+        <ComboBox materialDesign:HintAssist.Hint="Выберите или начните вводить фамилию преподавателя" Style="{StaticResource MaterialDesignFloatingHintComboBox}" x:Name="teacherFIOComboBox" SelectionChanged="TeacherFIOComboBoxSelectionChanged" DisplayMemberPath="TeacherFIO" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="10,0,0,10" Height="40"/>
 
         <Label Content="Предмет" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Width="180" VerticalAlignment="Bottom" Height="40" Margin="0,0,0,0" FontSize="20"/>
-        <ComboBox materialDesign:HintAssist.Hint="Выберите или начните вводить название предмета" Style="{StaticResource MaterialDesignFloatingHintComboBox}" x:Name="subjectComboBox" DisplayMemberPath="SubjectName" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="10,0,0,10" Height="40"/>
+        <ComboBox materialDesign:HintAssist.Hint="Выберите или начните вводить название предмета" Style="{StaticResource MaterialDesignFloatingHintComboBox}" x:Name="subjectComboBox" SelectionChanged="SubjectComboBoxSelectionChanged" DisplayMemberPath="SubjectName" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Margin="10,0,0,10" Height="40"/>
 
         <Label Content="Вид аттестации" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Left" Width="180" VerticalAlignment="Bottom" Height="40" Margin="0,0,0,0" FontSize="20"/>
-        <ComboBox materialDesign:HintAssist.Hint="Выберите зачет или экзамен" Style="{StaticResource MaterialDesignFloatingHintComboBox}" x:Name="attestationTypeComboBox" DisplayMemberPath="AttestationTypeName" Grid.Row="4" Grid.Column="1" Margin="10,0,0,5" Height="40"/>
+        <ComboBox materialDesign:HintAssist.Hint="Выберите зачет или экзамен" Style="{StaticResource MaterialDesignFloatingHintComboBox}" x:Name="attestationTypeComboBox" SelectionChanged="AttestationTypeComboBoxSelectionChanged" DisplayMemberPath="AttestationTypeName" Grid.Row="4" Grid.Column="1" Margin="10,0,0,5" Height="40"/>
 
         <Label Content="Дата" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left" Width="99" VerticalAlignment="Bottom" Height="40" Margin="40,0,0,0" FontSize="20"/>
         <DatePicker x:Name="attestationDateDatePicker" Grid.Column="3" Margin="10,0,0,11" Grid.Row="4" VerticalAlignment="Center" Height="40" />
