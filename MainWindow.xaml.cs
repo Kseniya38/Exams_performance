@@ -34,7 +34,6 @@ namespace ExamsPerformance
         {
             List<Attestation> attestationData = db.Attestation.ToList();
             
-
             for (int i = 0; i < attestationData.Count; i++)
             {
                 student = db.Student.Find(attestationData[i].StudentId);
@@ -49,9 +48,7 @@ namespace ExamsPerformance
 
         private void GridMouseUp(object sender, MouseButtonEventArgs e)
         {
-            selectedAttestation = attestationsGrid.SelectedItem as AttestationItem;
-            //MessageBox.Show("Выбрана запись: \n Студент: " + selectedAttestation.Student.StudentFIO + "\n Преподаватель: " + selectedAttestation.Teacher.TeacherFIO + "\n Предмет: " + selectedAttestation.Subject.SubjectName + "\n Дата: " + selectedAttestation.AttestationDate, "Выбрана запись");
-
+            selectedAttestation = attestationsGrid.SelectedItem as AttestationItem;           
         }
 
         private void AddButtonClick(object sender, RoutedEventArgs e)

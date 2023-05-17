@@ -17,7 +17,10 @@ namespace ExamsPerformance
     public partial class AddWindow : Window
     {
         public AppContext db = new AppContext();
-        public int studentId, teacherId, subjectId;
+        public Student student;
+        public Teacher teacher;
+        public Subject subject;
+        public AttestationType attestationType;
 
         public AddWindow()
         {
@@ -28,6 +31,10 @@ namespace ExamsPerformance
         {
             bool correct = true;
             bool markIsInt = false;
+            student = studentFIOComboBox.SelectedItem as Student;
+            teacher = teacherFIOComboBox.SelectedItem as Teacher;
+            subject = subjectComboBox.SelectedItem as Subject;
+            attestationType = attestationTypeComboBox.SelectedItem as AttestationType;
             string studentFIO = studentFIOComboBox.Text.Trim();
             string teacherFIO = teacherFIOComboBox.Text.Trim();
             string subjectName = subjectComboBox.Text.Trim();
@@ -39,15 +46,17 @@ namespace ExamsPerformance
 
             bool requiredFields = CheckRequiredFields(studentFIO, teacherFIO, subjectName, attestationTypeName);
 
+
+
             if (requiredFields == true)
             {
-
                 if (markStr == string.Empty && result != "неявка" && result != string.Empty)
                 {
                     correct = false;
                     markTextBox.Clear();
                     markTextBox.ToolTip = "Не указано количество баллов";
                     MessageBox.Show("Количество баллов не указывается только в случае неявки");
+                    return;
                 }
                 else if (markStr == string.Empty && result == string.Empty)
                 {
@@ -59,10 +68,11 @@ namespace ExamsPerformance
                     int number;
                     markIsInt = int.TryParse(markStr, out number);
 
-                    if (markIsInt == false)
+                    if (markIsInt == false && markStr.Length != 0)
                     {
-                        markTextBox.ToolTip = "Количество баллов должно быть от 0 до 100 включительно";
+                        markTextBox.ToolTip = "Количество баллов должно быть числом от 0 до 100 включительно";
                         markTextBox.Background = Brushes.Pink;
+                        return;
                     }
                     else
                     {
@@ -79,34 +89,7 @@ namespace ExamsPerformance
             {
                 resultComboBox.Background = Brushes.Transparent;
 
-                List<Student> studentsList = db.Student.ToList();
-                foreach (var item in studentsList)
-                {
-                    if (item.StudentFIO == studentFIO)
-                    {
-                        studentId = item.StudentId;
-                    }
-                }
-
-                List<Teacher> teachersList = db.Teacher.ToList();
-                foreach (var item in teachersList)
-                {
-                    if (item.TeacherFIO == teacherFIO)
-                    {
-                        teacherId = item.TeacherId;
-                    }
-                }
-
-                List<Subject> subjectsList = db.Subject.ToList();
-                foreach (var item in subjectsList)
-                {
-                    if (item.SubjectName == subjectName)
-                    {
-                        subjectId = item.SubjectId;
-                    }
-                }
-                                
-                Attestation attestation = new Attestation(studentId, teacherId, subjectId, attestationDate, attestationTypeName, mark, result);
+                Attestation attestation = new Attestation(student.StudentId, teacher.TeacherId, subject.SubjectId, attestationDate, attestationType.AttestationTypeName, mark, result);
                 db.Attestation.Add(attestation);
                 db.SaveChanges();
 
@@ -115,7 +98,7 @@ namespace ExamsPerformance
         }
 
         private void CancelButtonClick(object sender, RoutedEventArgs e)
-        {            
+        {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Hide();
@@ -176,7 +159,6 @@ namespace ExamsPerformance
                     resultComboBox.ToolTip = "Этому количеству баллов соответствует оценка \"отлично\"";
                     resultComboBox.Background = Brushes.Pink;
                 }
-
             }
             return correct;
         }
@@ -222,6 +204,26 @@ namespace ExamsPerformance
             }
 
             return requiredFields;
+        }
+
+        private void MarkTextBoxTextChanged(object sender, TextChangedEventArgs e)
+        {
+            string markStr = markTextBox.Text.Trim();
+            bool markIsInt;
+
+            if (markStr != string.Empty)
+            {
+                int number;
+                markIsInt = int.TryParse(markStr, out number);
+
+                if (markIsInt == false && markStr.Length != 0)
+                {
+                    markTextBox.ToolTip = "Количество баллов должно быть числом от 0 до 100 включительно";
+                    markTextBox.Background = Brushes.Pink;
+                    return;
+                }
+            }
+            else { markTextBox.Background = Brushes.Transparent; }
         }
     }
 }
